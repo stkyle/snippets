@@ -1,10 +1,13 @@
 
+
+
+# Reading a pkcs12 certificate with pyOpenSSL.crypto
 # http://stackoverflow.com/questions/6345786/python-reading-a-pkcs12-certificate-with-pyopenssl-crypto
-# load everything. Probably not the best idea in production...
-from OpenSSL.crypto import *
+
+from OpenSSL import crypto
 
 # open it, using password. Supply/read your own from stdin.
-p12 = load_pkcs12(file("/path/to/cert.p12", 'rb').read(), passwd)
+p12 = crypto.load_pkcs12(file("/path/to/cert.p12", 'rb').read(), passwd)
 
 # get various properties of said file.
 # note these are PyOpenSSL objects, not strings although you
